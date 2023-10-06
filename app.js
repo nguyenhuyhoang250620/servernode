@@ -4,8 +4,16 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 const http = require('http');
 const multiparty = require('multiparty');
+var  mysql = require('mysql');
+let connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'crud'
+});
 
-const hostname = '192.168.2.27';
+
+const hostname = '192.168.2.26';
 const port = 3000;
 
 const server = http.createServer((req, res) => {
@@ -20,21 +28,36 @@ const server = http.createServer((req, res) => {
           }
     
           // Lấy giá trị của trường 'data'
-          const data = fields.data[0];
-    
-          // Ghi log giá trị dữ liệu nhận được từ phía frontend
-          console.log('Received data:', data);
-    
-          // Trả về phản hồi cho phía frontend
+          const id = fields.id[0];
+          const username = fields.username[0];
+          const age = fields.age[0];
+          const city = fields.city[0];
+        
           res.statusCode = 200;
           res.end('Data received');
+          connection.connect(function(err) {
+            if (err) throw err;
+            
+            var sql = `INSERT INTO employs (id, username, age, city) VALUES (${id}, '${username}', ${age}, '${city}')`
+            connection.query(sql, function (err, result) {
+              if (err) throw err;
+              console.log("1 record inserted");
+            });
+            connection.query("SELECT * FROM employs WHERE id=2", function (err, result, fields) {
+              if (err) throw err;
+              console.log(result);
+            });
+          });
         });
       } else {
         res.statusCode = 404;
         res.end();
       }
 });
-
+connection.query("SELECT * FROM employs WHERE id=2", function (err, result, fields) {
+  if (err) throw err;
+  console.log(result);
+});
 
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
