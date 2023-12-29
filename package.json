@@ -14,12 +14,8 @@
     "express": "^4.18.2",
     "http": "^0.0.1-security",
     "multiparty": "^4.2.3",
-<<<<<<< Updated upstream
-    "mysql": "^2.18.1",
-    "node-rtsp-stream": "^0.0.9"
-=======
-    "node-rtsp-stream": "^0.0.9",
-    "sqlite3": "^5.1.6"
->>>>>>> Stashed changes
+    "openai": "^4.24.1",
+    "sqlite3": "^5.1.6",
+    "ws": "^8.16.0"
   }
 }
