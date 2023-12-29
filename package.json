@@ -14,7 +14,12 @@
     "express": "^4.18.2",
     "http": "^0.0.1-security",
     "multiparty": "^4.2.3",
+<<<<<<< Updated upstream
     "mysql": "^2.18.1",
     "node-rtsp-stream": "^0.0.9"
+=======
+    "node-rtsp-stream": "^0.0.9",
+    "sqlite3": "^5.1.6"
+>>>>>>> Stashed changes
   }
 }
