@@ -35,7 +35,6 @@ app.post('/quote', (req, res) => {
 //  get request
 app.get("/quote", (req, res) => { 
     sql = "SELECT * FROM quote";
-    console.log(sql)
     try {
         db.all(sql, [], (err,rows)=>{
             if(!req.app){

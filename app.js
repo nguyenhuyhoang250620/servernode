@@ -12,7 +12,6 @@ let connection = mysql.createConnection({
   database: 'crud'
 });
 
-
 const hostname = '192.168.2.26';
 const port = 3000;
 
